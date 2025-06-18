@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 36px;
+            background-color: aquamarine;
+                        text-transform: uppercase;
+
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            display: inline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Analysis Dashboard</h1>
+    <div class="container">
+        <div class="button-container">
+            <form action="/load_data" method="get">
+                <button type="submit">Load Data</button>
+            </form>
+            <form action="/feature_exploration" method="get">
+                <button type="submit">Feature Exploration</button>
+            </form>
+            <form action="/outlier_detection" method="get">
+                <button type="submit">Outliers</button>
+            </form>
+            <form action="/churn_rate" method="get">
+                <button type="submit">Churn Rate Analysis</button>
+            </form>
+            <!-- {% for image_path in image_paths %}
+                <h2>Boxplot for {{ loop.index }}</h2>
+                <img src="{{ url_for('static', filename=image_path) }}"><br><br>
+            {% endfor %} -->
+            
+            <form action="/correlation_heatmap" method="get">
+                <button type="submit">Correlation Heatmap</button>
+            </form>
+            <form action="{{ url_for('categorical_churn_distribution') }}">
+                <button type="submit">Feature Distribution</button>
+            </form>
+            <form action="/numerical_distribution" method="get"> <!-- Add this form -->
+                <button type="submit">Numerical Distribution</button>
+            </form>
+            <form action="/elbow_curve" method="get"> <!-- Add this form -->
+                <button type="submit">Elbow curve</button>
+            </form>
+            <form action="/cluster_analysis" method="get"> <!-- Add this form -->
+                <button type="submit">Cluster analysis</button>
+            </form>
+            <form action="/retention_plan1" method="get"> <!-- Add this form -->
+                <button type="submit">Existing customers' Churn probability distribution</button>
+            </form>
+
+            <form action="/retention_plan" method="get"> <!-- Add this form -->
+                <button type="submit">Existing customer risk type distribution</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div id="output">
+            {{ output|safe }}
+        </div>
+    </div>
+</body>
+</html>
